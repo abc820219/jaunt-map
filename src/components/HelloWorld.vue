@@ -1,16 +1,27 @@
 <template>
   <div>
     {{ count }}
-    <button @click="add">
-      add
-    </button>
+    <JauntButton @click="add" />
+    <JauntIcon
+      width="20px"
+      height="20px"
+      padding="10px"
+    />
+    <JauntBox> 123sadfasdfadfad </JauntBox>
+    <JauntSearch v-model="txt" />
   </div>
 </template>
 
 <script>
-import { reactive, toRefs } from "@vue/composition-api";
+import JauntButton from "@/assets/libs/Jaunt-Button";
+import JauntIcon from "@/assets/libs/Jaunt-Icon";
+import JauntSearch from "@/assets/libs/Jaunt-Search";
+import JauntBox from "@/assets/libs/Jaunt-Box";
+import { reactive, toRefs, ref } from "@vue/composition-api";
 export default {
+  components: { JauntButton, JauntIcon, JauntBox, JauntSearch },
   setup() {
+    const txt = ref("");
     const { count } = toRefs(
       reactive({
         count: 0,
@@ -19,7 +30,7 @@ export default {
     function add() {
       this.count++;
     }
-    return { count, add };
+    return { count, add, txt };
   },
 };
 </script>
