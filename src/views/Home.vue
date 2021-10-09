@@ -1,17 +1,21 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="home container">
+    <JHeader />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import JHeader from "@/components/common/JHeader.vue";
 export default {
-  name: "Home",
   components: {
-    HelloWorld,
+    JHeader,
+  },
+  setup() {
+    return {};
   },
 };
 </script>
+
+<style lang="scss" scoped>
+
+</style>

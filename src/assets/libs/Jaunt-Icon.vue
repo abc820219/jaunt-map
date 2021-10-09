@@ -6,11 +6,10 @@
     @mouseenter="() => hoverHandler('enter')"
     @mouseleave="() => hoverHandler('leave')"
   >
-    <div>
-      <slot
-        name="svg"
-        :currentSvgColor="currentSvgColor"
-      >
+    <div
+      class="jaunt-icon-svg"
+    >
+      <slot name="svg">
         svg
       </slot>
     </div>
@@ -18,8 +17,9 @@
 </template>
 
 <script>
-import { computed, ref } from "@vue/composition-api";
+import { ref } from "@vue/composition-api";
 export default {
+  name: "JIcon",
   props: {
     hover: {
       type: Boolean,
@@ -33,13 +33,9 @@ export default {
       type: String,
       default: "auto",
     },
-    color: {
-      type: String,
-      default: "#373A43",
-    },
     padding: {
       type: String,
-      default: "5px",
+      default: "0px",
     },
     borderRadius: {
       type: String,
@@ -50,15 +46,11 @@ export default {
       default: true,
     },
   },
-  setup(props) {
+  setup() {
     let isHover = ref(false);
-    const currentSvgColor = computed({
-      get: () => (isHover.value ? "#fff" : props.color),
-    });
     function hoverHandler(type) {
       switch (type) {
         case "enter":
-          console.log(123)
           isHover.value = true;
           break;
         case "leave":
@@ -69,9 +61,8 @@ export default {
       }
     }
     return {
-      currentSvgColor,
       hoverHandler,
-      isHover
+      isHover,
     };
   },
 };
@@ -87,11 +78,12 @@ export default {
   > div {
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 50%;
     transform: translate(-50%, -50%);
   }
 }
 .jaunt-icon-hover:hover {
+  color: #fff;
   background: linear-gradient(180deg, #38d0b7 0%, #35b3ea 100%);
 }
 .cursor-pointer {

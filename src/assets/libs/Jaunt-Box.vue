@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name:'JBox',
   props: {
     width: {
       type: String,

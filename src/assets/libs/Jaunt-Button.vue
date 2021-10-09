@@ -1,7 +1,7 @@
 <template>
   <button
-    :style="{ color, padding, borderRadius, width, height }"
-    :class="{ 'jaunt-button': true, 'button-hover': hover }"
+    :style="{ padding, borderRadius, width, height }"
+    :class="{ 'jaunt-button': true, 'jaunt-button-hover': hover }"
     @click="$emit('click')"
   >
     <slot>
@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  name:'JButton',
   props: {
     hover: {
       type: Boolean,
@@ -25,10 +26,6 @@ export default {
       type: String,
       default: "auto",
     },
-    color: {
-      type: String,
-      default: "#646466",
-    },
     padding: {
       type: String,
       default: "5px",
@@ -41,18 +38,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .jaunt-button {
   cursor: pointer;
   border: none;
   background: #f4f5f7;
   box-shadow: -2px -2px 2px #ffffff, 0px 0px 5px #d4dbea;
+  color: #646466;
 }
 .jaunt-button:active{
     transform: scale(1.1);
 }
-.jaunt-button-hover:hover {
-  background: linear-gradient(180deg, #38d0b7 0%, #35b3ea 100%);
-  color: #ffffff;
-}
+// .jaunt-button-hover:hover {
+//   background: linear-gradient(180deg, #38d0b7 0%, #35b3ea 100%);
+//   color: #ffffff;
+// }
 </style>

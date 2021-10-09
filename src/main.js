@@ -6,6 +6,8 @@ import VueCompositionAPI from '@vue/composition-api'
 import '@/assets/scss/all.scss'
 Vue.use(VueCompositionAPI)
 Vue.config.productionTip = false
+import JUI from '@/assets/libs/index.js'
+Vue.use(JUI)
 
 new Vue({
   router,
